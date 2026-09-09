@@ -1,2 +1,3 @@
-# shantai-second-childhood
-Shantai Second Childhood — public courtyard site mirrored onto the live Wix URL
+# Shantai Second Childhood
+
+Public mirror of the courtyard website, loaded on the live Wix site.

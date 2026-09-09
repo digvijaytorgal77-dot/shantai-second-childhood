@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shantai Second Childhood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Outfit:wght@400;500;600&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0a09;--ink2:#171412;--cream:#f4ebda;--paper:#fff9f0;--gold:#e39b12;--gold2:#c47c0a;--red:#c4452d;--muted:#8a7864;--line:#e4d3b6;--disp:"Fraunces",Georgia,serif;--sans:"Outfit",system-ui,sans-serif;--deva:"Tiro Devanagari Marathi","Noto Serif Devanagari",serif}
+*{box-sizing:border-box}html,body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);min-height:100%}
+body{background-image:radial-gradient(ellipse 80% 50% at 100% -10%,rgba(227,155,18,.08),transparent 50%),radial-gradient(ellipse 60% 40% at -10% 20%,rgba(196,69,45,.05),transparent 50%)}
+a{color:inherit;text-decoration:none}button,a[role=button]{cursor:pointer}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.02em;text-wrap:balance;margin:0}
+p{text-wrap:pretty}::selection{background:var(--gold);color:var(--ink)}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+.hdr{position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(244,235,218,.1);background:rgba(11,10,9,.9);backdrop-filter:blur(12px)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:4.25rem;max-width:72rem;margin:0 auto;padding:0 1.5rem}
+.brand{display:flex;align-items:center;gap:.65rem}
+.brand img{width:40px;height:40px;border-radius:50%;background:var(--cream);object-fit:cover;box-shadow:0 0 0 1px rgba(227,155,18,.5)}
+.brand b{display:block;font-family:var(--disp);font-size:15px;color:var(--cream);font-weight:600}
+.brand span{display:block;margin-top:2px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.nav{display:none;gap:2px} .nav a{border-radius:999px;padding:.5rem .9rem;font-size:14px;color:rgba(244,235,218,.7)}
+.nav a.on,.nav a:hover{color:var(--gold);background:rgba(244,235,218,.1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:500 14px var(--sans);border:0;border-radius:999px;padding:0 1.4rem;height:2.75rem;transition:transform .15s,background .15s,color .15s,border-color .15s}
+.btn:active{transform:scale(.96)}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 10px 24px -12px rgba(227,155,18,.8)}
+.btn-gold:hover{background:var(--gold2)}
+.btn-ink{background:var(--ink);color:var(--cream)}.btn-ink:hover{background:var(--ink2)}
+.btn-ghost{background:transparent;color:var(--cream);border:1px solid rgba(244,235,218,.25)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-cream{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.btn-xl{height:3.5rem;padding:0 1.75rem;font-size:16px}
+.btn-lg{height:3rem;padding:0 1.5rem}
+.ham{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(244,235,218,.2);background:transparent;color:var(--cream)}
+.mnav{display:none;border-top:1px solid rgba(244,235,218,.1);background:var(--ink);padding:1rem 1.5rem}
+.mnav a{display:block;border-radius:12px;padding:.75rem 1rem;color:var(--cream)}
+.mnav a.on{background:rgba(244,235,218,.1);color:var(--gold)}
+.hero{position:relative;overflow:hidden;background:var(--ink);color:var(--cream);min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-in{position:relative;max-width:72rem;margin:0 auto;width:100%;padding:2.5rem 1.5rem 4rem}
+.deva{font-family:var(--deva);color:var(--gold);font-size:1.15rem}
+.hero h1{font-size:clamp(2.7rem,8vw,6rem);line-height:.95;font-weight:500;max-width:14ch;margin-top:.75rem}
+.hero h1 i{font-style:italic;color:var(--gold)}
+.lead{max-width:36rem;margin-top:1.5rem;font-size:1.05rem;line-height:1.65;color:rgba(244,235,218,.75)}
+.row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.pin{margin-top:2rem;display:flex;align-items:center;gap:.5rem;font-size:14px;color:rgba(244,235,218,.55)}
+.sun{position:absolute;right:-4rem;top:-4rem;width:18rem;height:18rem;opacity:.4;pointer-events:none}
+.sun svg{width:100%;height:100%;animation:spin 48s linear infinite;transform-origin:center}
+.petals{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.petal{position:absolute;top:-8%;width:14px;height:18px;border-radius:70% 0 70% 0;background:linear-gradient(135deg,#f0b429,#c47c0a);animation:fall 16s linear infinite;z-index:0}
+@keyframes fall{0%{transform:translate3d(0,-12vh,0) rotate(0);opacity:0}12%{opacity:.9}100%{transform:translate3d(18vw,110vh,0) rotate(240deg);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ticker{to{transform:translateX(-50%)}}
+@keyframes fade{from{opacity:0;transform:translateY(14px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.enter{animation:fade .7s cubic-bezier(.2,0,0,1) both}
+.ticker{overflow:hidden;border-block:1px solid var(--ink);background:var(--gold)}
+.ticker-track{display:flex;width:max-content;gap:2.5rem;padding:.75rem 0;font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;animation:ticker 42s linear infinite}
+.ticker-track span{display:flex;align-items:center;gap:2.5rem;padding:0 1.25rem}
+.stats{display:grid;gap:1.5rem;padding:4rem 0;max-width:72rem;margin:0 auto}
+.stats div{border-top:1px solid var(--ink);padding-top:1.25rem}
+.stats b{font-family:var(--disp);font-size:clamp(2rem,4vw,3rem);font-weight:500;display:block}
+.stats small{display:block;margin-top:.5rem;font-size:14px;color:var(--muted)}
+.split{display:grid;gap:2.5rem;align-items:center;max-width:72rem;margin:0 auto;padding:0 1.5rem 5rem}
+.split img{width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:1.75rem}
+.kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
+.ink{background:var(--ink);color:var(--cream);padding:4rem 0}
+.ink .kicker{color:var(--gold)}
+.cards{display:grid;gap:1rem;margin-top:2.5rem}
+.card{border-radius:1.4rem;border:1px solid rgba(244,235,218,.15);background:var(--ink2);padding:1.25rem;transition:border-color .2s}
+.card:hover{border-color:var(--gold)}
+.card h3{font-size:1.5rem;margin:.75rem 0 .25rem}
+.card .v{font-family:var(--disp);font-size:1.85rem;color:var(--gold);margin-top:1.25rem}
+.card .m{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,235,218,.45)}
+.sec{max-width:72rem;margin:0 auto;padding:4rem 1.5rem}
+.paper{background:var(--paper);border-block:1px solid var(--line)}
+.quote{max-width:56rem;margin:0 auto;padding:4rem 1.5rem}
+.quote q{font-family:var(--disp);font-size:clamp(1.4rem,3vw,2.25rem);line-height:1.25;display:block}
+.press a{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;padding:1rem 0;border-top:1px solid var(--line)}
+.press a:hover{color:var(--red)}
+.press .src{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.goldbar{background:var(--gold);border-top:1px solid var(--line);padding:3.5rem 1.5rem;color:var(--ink)}
+.goldbar-in{max-width:72rem;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem}
+.live{border-radius:1.5rem;border:1px solid var(--line);background:var(--paper);padding:1.75rem}
+.live-hd{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;align-items:flex-end}
+.badge{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;background:var(--ink);color:var(--cream);padding:.35rem .75rem;font-size:12px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.slots{display:grid;gap:.5rem;margin-top:1.5rem}
+.slot{display:flex;gap:.75rem;width:100%;text-align:left;border-radius:1rem;border:1px solid var(--line);background:rgba(244,235,218,.6);padding:.75rem;color:var(--ink);font:inherit}
+.slot.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.slot .t{width:4rem;flex-shrink:0;font-family:var(--disp);font-size:14px}
+.slot.on .t{color:var(--gold)}
+.now{border-radius:999px;padding:1px 6px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:var(--paper)}
+.slot.on .now{background:var(--gold);color:var(--ink)}
+.wall{display:grid;gap:2rem}
+.form{border-radius:1.5rem;border:1px solid var(--line);background:var(--paper);padding:1.5rem}
+label{display:block;margin-top:1rem;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+input,textarea,select{width:100%;margin-top:.25rem;border:1px solid var(--line);background:var(--cream);border-radius:12px;padding:.7rem .8rem;font:inherit;color:var(--ink);outline:none}
+input:focus,textarea:focus,select:focus{box-shadow:0 0 0 2px var(--gold)}
+textarea{resize:none}
+.notes{display:grid;gap:.75rem}
+.note{border-radius:1.25rem;border:1px solid var(--line);background:var(--paper);padding:1.25rem}
+.phero{background:var(--ink);color:var(--cream);border-bottom:1px solid var(--line);padding:3.5rem 1.5rem 5rem}
+.phero .kicker{color:var(--gold)}
+.phero h1{font-size:clamp(2rem,5vw,3.75rem);line-height:1.05;margin-top:.75rem;max-width:18ch}
+.phero p{max-width:40rem;margin-top:1.25rem;color:rgba(244,235,218,.75);line-height:1.65}
+.page{display:none}.page.on{display:block}
+.fam{display:grid;gap:1rem}
+.fam article{border-radius:1.4rem;border:1px solid var(--line);background:var(--cream);padding:1.5rem}
+.tier{display:flex;width:100%;align-items:center;justify-content:space-between;border-radius:1rem;border:1px solid var(--line);background:var(--paper);padding:1rem;text-align:left;font:inherit;margin-top:.75rem}
+.tier.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.ft{background:var(--ink);color:var(--cream);padding:3.5rem 1.5rem 0}
+.ft-grid{max-width:72rem;margin:0 auto;display:grid;gap:2.5rem}
+.ft a:hover{color:var(--gold)}
+.ft-bot{border-top:1px solid rgba(244,235,218,.1);margin-top:2.5rem;padding:1.25rem 0;text-align:center;font-size:12px;color:rgba(244,235,218,.45)}
+.photos{display:grid;gap:.75rem;padding:0 1.5rem 4rem}
+@media(min-width:640px){
+  .stats{grid-template-columns:repeat(2,1fr);padding-left:1.5rem;padding-right:1.5rem}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .notes{grid-template-columns:repeat(2,1fr)}
+  .fam{grid-template-columns:repeat(2,1fr)}
+  .photos{grid-template-columns:repeat(3,1fr)}
+  .donate-desk{display:inline-flex!important}
+}
+@media(min-width:1024px){
+  .nav{display:flex}
+  .ham{display:none}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .split,.wall,.visit{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .ft-grid{grid-template-columns:5fr 3fr 2fr 2fr}
+  .mnav{display:none!important}
+  .sun{width:24rem;height:24rem}
+}
+@media(prefers-reduced-motion:reduce){.petal,.sun svg,.ticker-track,.enter{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#home" data-go="home">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle cx='100' cy='100' r='98' fill='%23F7F1E6'/><circle cx='100' cy='100' r='93' stroke='%23E39B12' stroke-width='2.5'/><path d='M28 58c22-38 122-38 144 0-20-8-48-14-72-14s-52 6-72 14z' fill='%23E39B12'/><circle cx='100' cy='58' r='26' fill='%23F0B429'/><circle cx='100' cy='58' r='16' fill='%23E39B12'/><text x='100' y='128' text-anchor='middle' font-family='Tiro Devanagari Marathi,serif' font-size='34' font-weight='600' fill='%231A1208'>शांताई</text><path d='M62 142h76' stroke='%23E39B12' stroke-width='1.5'/><text x='100' y='162' text-anchor='middle' font-family='Outfit,sans-serif' font-size='9' letter-spacing='3' fill='%238A7864'>SECOND CHILDHOOD</text></svg>" alt="Shantai seal">
+      <span><b>Shantai</b><span>Second Childhood</span></span>
+    </a>
+    <nav class="nav" id="desk-nav"></nav>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <a class="btn btn-gold donate-desk" href="#give" data-go="give" style="display:none">❤ Donate</a>
+      <button class="ham" id="ham" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div class="mnav" id="mnav"></div>
+</header>
+
+<main id="main">
+<section class="page on" id="home">
+  <section class="hero">
+    <div class="petals" aria-hidden="true" id="petals"></div>
+    <div class="sun" aria-hidden="true">
+      <svg viewBox="0 0 200 200" id="sun"></svg>
+    </div>
+    <div class="hero-in">
+      <p class="deva enter">शांताई वृद्धाश्रम</p>
+      <h1 class="enter">Second <i>childhood.</i></h1>
+      <p class="lead enter">A free home in Bamanwadi, Belagavi, for elders who were told the story was over. Since 1998 the courtyard has disagreed — with bhajan, breakfast, physiotherapy, and the internet's favourite dancing grandmothers.</p>
+      <div class="row enter">
+        <a class="btn btn-gold btn-xl" href="#viral" data-go="viral">Meet the Viral Dadis →</a>
+        <a class="btn btn-ghost btn-xl" href="#visit" data-go="visit">Plan a visit</a>
+      </div>
+      <p class="pin enter">📍 Jamboti Road, Bamanwadi, Near VTU, Belagavi, Karnataka 590001</p>
+    </div>
+  </section>
+  <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+  <section class="stats wrap" id="stats"></section>
+  <section class="split">
+    <img src="https://static.wixstatic.com/media/9c3bce_6685242b292a408f91e26c6dad347030~mv2.jpg" alt="Sunlit ashram courtyard with marigold rangoli">
+    <div>
+      <p class="kicker">Named for a mother</p>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:.5rem">A house that refused to be an institution.</h2>
+      <p style="margin-top:1rem;line-height:1.7;color:rgba(11,10,9,.8)">Vijay More, former Mayor of Belagavi, and Vijay Patil opened Shantai Vruddhashram in 1998 and named it after Vijay's mother. They take no government grant. Residents pay nothing. The More family lived here for eight years after marriage — the children were born in this courtyard.</p>
+      <p style="margin-top:.75rem;line-height:1.7;color:rgba(11,10,9,.8)">Any caste. Any faith. The door is for people with no one left, not for those who still have sons, pensions and property. Terms apply, because the beds belong to the ones who need them most.</p>
+      <a class="btn btn-ink" href="#story" data-go="story" style="margin-top:1.5rem">Read the story →</a>
+    </div>
+  </section>
+  <section class="ink">
+    <div class="wrap">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:flex-end">
+        <div><p class="kicker">The Viral Dadis</p><h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:.5rem">Age is a terrible excuse.</h2></div>
+        <a class="btn btn-gold" href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer">@shantai_second_childhood</a>
+      </div>
+      <div class="cards" id="reels"></div>
+      <p style="margin-top:2rem;max-width:48rem;color:rgba(244,235,218,.65);font-size:14px;line-height:1.7">Cheryl More taught the steps. The ajjis stole the internet. Vicky Kaushal, Divine and Jiya Shankar have shared the reels. Eight grandmothers received a standing ovation on India's Got Talent. Suman Mohite, 79, brought home the Fit India Championship.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <p class="kicker">A day in the house</p>
+    <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:.5rem">The clock is a kind of love letter.</h2>
+    <p style="margin-top:.75rem;color:var(--muted);max-width:36rem">Tap any hour. The gold badge is whatever is happening in Bamanwadi right now.</p>
+    <div class="live" style="margin-top:2rem" data-live="compact"></div>
+    <a class="btn btn-ink" href="#life" data-go="life" style="margin-top:1.5rem">Full daily life →</a>
+  </section>
+  <section class="paper">
+    <div class="quote">
+      <p class="kicker">In their words</p>
+      <q style="margin-top:1rem">Before coming here, we thought our lives were over. Here we have got a new life. We celebrate and enjoy every moment. We are fit, both physically and mentally. Now what else do we need?</q>
+      <p style="margin-top:1.25rem;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">Lata Patil · Resident, 72</p>
+    </div>
+  </section>
+  <section class="sec">
+    <p class="kicker">In the papers</p>
+    <h2 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-top:.5rem">The internet was late. Belagavi already knew.</h2>
+    <div class="press" id="press" style="margin-top:2rem;border-bottom:1px solid var(--line)"></div>
+  </section>
+  <section class="ink">
+    <div class="split wrap" style="padding-bottom:0">
+      <div>
+        <p class="kicker">Mumbai, by air</p>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:.5rem">Thirty-seven first flights, one harbour.</h2>
+        <p style="margin-top:1rem;color:rgba(244,235,218,.7);line-height:1.7">Breakfast at the Taj. Gateway of India. Siddhivinayak. Mahalaxmi. The Fountain of Joy. A boat on the water. The kind of trip people postpone until it is too late — so Shantai did it now.</p>
+        <a class="btn btn-gold" href="#life" data-go="life" style="margin-top:1.5rem">Walk the trip</a>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <img src="https://static.wixstatic.com/media/9c3bce_6685242b292a408f91e26c6dad347030~mv2.jpg" alt="Courtyard light" style="height:16rem;object-fit:cover;border-radius:1rem;width:100%">
+        <img src="https://static.wixstatic.com/media/9c3bce_571ca17e2482487187f772f4438c4bf2~mv2.jpg" alt="The gate" style="height:16rem;object-fit:cover;border-radius:1rem;width:100%;margin-top:2rem">
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wall">
+      <form class="form" id="bless-form">
+        <p class="kicker">Leave a blessing</p>
+        <h3 style="font-size:1.85rem;margin-top:.5rem">The courtyard reads every note.</h3>
+        <p style="margin-top:.5rem;font-size:14px;color:var(--muted)">No account needed. Notes stay on this device and on this wall — a small digital namaskar.</p>
+        <label>Your name</label><input name="name" required>
+        <label>City</label><input name="city">
+        <label>Message</label><textarea name="message" rows="4" required></textarea>
+        <button class="btn btn-gold" type="submit" style="width:100%;margin-top:1rem" id="bless-btn">Pin it to the wall</button>
+      </form>
+      <ul class="notes" id="bless-list"></ul>
+    </div>
+  </section>
+  <section class="goldbar">
+    <div class="goldbar-in">
+      <div>
+        <p style="font-family:var(--disp);font-size:clamp(1.7rem,3vw,2.25rem)">The house runs on you.</p>
+        <p style="margin-top:.5rem;max-width:28rem;color:rgba(11,10,9,.75)">No grant. No fees. Donations keep the kettle on and the physio mats rolled out.</p>
+      </div>
+      <div class="row" style="margin:0">
+        <a class="btn btn-ink btn-lg" href="#give" data-go="give">❤ Give</a>
+        <a class="btn btn-cream btn-lg" href="#visit" data-go="visit">Come by</a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="story">
+  <div class="phero"><div class="wrap" style="max-width:56rem;margin:0 auto;padding:0">
+    <p class="kicker">Since 1998</p>
+    <h1>Named for Shantai. Built for everyone else.</h1>
+    <p>Most old-age homes in Belagavi thirty years ago opened for one community. Vijay More and Vijay Patil opened one for whoever had nowhere left to go.</p>
+  </div></div>
+  <section class="split" style="padding-top:4rem">
+    <img src="https://static.wixstatic.com/media/9c3bce_6063d656fbdd4a399165c38c29e0aaf8~mv2.jpg" alt="Garden swing under a neem tree">
+    <div>
+      <h2 style="font-size:clamp(1.7rem,3vw,2.25rem)">A mother, a mayor, a courtyard.</h2>
+      <p style="margin-top:1rem;line-height:1.7;color:rgba(11,10,9,.8)">Vijay More, later Mayor of Belagavi, named the home after his mother Shantai. He and co-founder Vijay Patil started in Bamanwadi, 13 km from the city, on Jamboti Road near VTU. The work has never taken a government grant. Residents are not charged. Conditions apply — because the beds are kept for people with no sons, no pension, no property, no net.</p>
+      <p style="margin-top:.75rem;line-height:1.7;color:rgba(11,10,9,.8)">After marriage, Vijay and Maria lived at the ashram for eight years. Their children Allan and Cheryl were born here. The family still treats the residents as their own. Maria personally cares for women who are bedridden. Cheryl, with an MBA, teaches song and dance in her spare hours and turned the courtyard into a national stage.</p>
+    </div>
+  </section>
+  <section class="paper" style="padding:4rem 1.5rem">
+    <div class="wrap">
+      <h2 style="font-size:1.85rem">The family of the house</h2>
+      <div class="fam" id="family" style="margin-top:2rem"></div>
+    </div>
+  </section>
+  <section class="sec">
+    <h2 style="font-size:1.85rem">Who the door is for</h2>
+    <div class="stats" style="padding:1.5rem 0 0;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))" id="door"></div>
+    <p style="margin-top:2rem;font-size:14px;color:var(--muted)">Admission is always at the ashram's discretion. Terms and conditions apply.</p>
+  </section>
+  <section class="ink"><div class="wrap" style="max-width:48rem">
+    <q style="font-family:var(--disp);font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.3;display:block">Thirty years ago there were very few old age homes in Belagavi, and most admitted people only from their own caste or religion. So we started this home to give shelter to senior citizens who have no support in life.</q>
+    <p style="margin-top:1rem;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)">Vijay More · Founder · former Mayor of Belagavi</p>
+    <a class="btn btn-gold" href="#visit" data-go="visit" style="margin-top:2rem">Ask about visiting or admission</a>
+  </div></section>
+</section>
+
+<section class="page" id="life">
+  <div class="phero"><div class="wrap" style="max-width:56rem;margin:0 auto;padding:0">
+    <p class="kicker">Daily life</p>
+    <h1>Bhajan at dawn. Reels at dusk.</h1>
+    <p>Walk, prayer, breakfast, physio, lunch, rest, tea, work, bhajan, dinner, television. On Sundays, a film. Twice a year, a city they had only seen in songs.</p>
+  </div></div>
+  <section class="sec"><div class="live" data-live="full"></div></section>
+  <section class="paper" style="padding:4rem 1.5rem">
+    <div class="wrap">
+      <h2 style="font-size:clamp(1.7rem,3vw,2.25rem)">The rest of the week is not quiet.</h2>
+      <div class="cards" id="acts" style="margin-top:2rem"></div>
+    </div>
+  </section>
+  <section class="sec">
+    <p class="kicker">Memorable trip</p>
+    <h2 style="font-size:clamp(2rem,4vw,2.5rem);margin-top:.5rem">Mumbai, last year, by flight.</h2>
+    <p style="margin-top:.75rem;color:var(--muted);max-width:36rem">Click through the days. Thirty-seven residents. Four days. One harbour.</p>
+    <div class="split" style="padding:2rem 0 0" id="mumbai"></div>
+  </section>
+  <div class="photos wrap">
+    <img src="https://static.wixstatic.com/media/9c3bce_6063d656fbdd4a399165c38c29e0aaf8~mv2.jpg" alt="Morning physiotherapy" style="height:14rem;width:100%;object-fit:cover;border-radius:1.4rem">
+    <img src="https://static.wixstatic.com/media/9c3bce_ac7bbcf8cae2430eaae86a9304711d9f~mv2.jpg" alt="Dining hall" style="height:14rem;width:100%;object-fit:cover;border-radius:1.4rem">
+    <img src="https://static.wixstatic.com/media/9c3bce_e9ff2e41c9664de09189c51720b1ab87~mv2.jpg" alt="Evening lamps" style="height:14rem;width:100%;object-fit:cover;border-radius:1.4rem">
+  </div>
+</section>
+
+<section class="page" id="viral">
+  <div class="phero"><div class="wrap" style="max-width:56rem;margin:0 auto;padding:0">
+    <p class="kicker">Viral Dadis</p>
+    <h1>The internet found the courtyard. The courtyard was already dancing.</h1>
+    <p>@shantai_second_childhood — a lakh of people, crores of views, and a group of women who treat trending audio as a dare.</p>
+  </div></div>
+  <section class="sec">
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <a class="card" style="background:var(--ink)" href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer"><p style="font-family:var(--disp);font-size:2rem;color:var(--cream);margin-top:1rem">1 L+</p><p style="color:rgba(244,235,218,.6);font-size:14px">Instagram family</p></a>
+      <a class="card" style="background:var(--ink)" href="https://www.youtube.com/@shantai_second_childhood" target="_blank" rel="noreferrer"><p style="font-family:var(--disp);font-size:2rem;color:var(--cream);margin-top:1rem">YouTube</p><p style="color:rgba(244,235,218,.6);font-size:14px">shantai_second_childhood</p></a>
+      <a class="card" style="background:var(--ink)" href="https://www.facebook.com/shantaivruddhashram" target="_blank" rel="noreferrer"><p style="font-family:var(--disp);font-size:2rem;color:var(--cream);margin-top:1rem">Facebook</p><p style="color:rgba(244,235,218,.6);font-size:14px">Shantai Vruddhashram</p></a>
+    </div>
+    <h2 style="font-size:1.85rem;margin-top:3.5rem">Hall of reels</h2>
+    <p style="margin-top:.5rem;font-size:14px;color:var(--muted)">Tap a card to open Instagram. Numbers as reported in 2026 press.</p>
+    <div class="cards" id="reels2" style="margin-top:1.5rem"></div>
+  </section>
+  <section class="ink">
+    <div class="split wrap" style="padding-bottom:0">
+      <div>
+        <p class="kicker">On television</p>
+        <h2 style="font-size:clamp(2rem,4vw,2.5rem);margin-top:.5rem">India's Got Talent, then Fit India.</h2>
+        <p style="margin-top:1rem;line-height:1.7;color:rgba(244,235,218,.75)">Eight grandmothers walked into Yash Raj Studio as special contestants. Navjot Singh Sidhu, Malaika Arora and Shaan stood up. Host Harsh Limbachiyaa cheered. They danced Tauba Tauba and Kaala Chasma like the floor belonged to them.</p>
+        <p style="margin-top:.75rem;line-height:1.7;color:rgba(244,235,218,.75)">They have also been special guests on Zee TV's Sa Re Ga Ma Pa at Film City. In March 2026, Suman Mohite, 79, received the Fit India Championship at RK Beach, Visakhapatnam, from the Sports Authority of India — then did Zumba on the sand.</p>
+      </div>
+      <img src="https://static.wixstatic.com/media/9c3bce_ac7bbcf8cae2430eaae86a9304711d9f~mv2.jpg" alt="Sarees, bangles and a dholak ready for rehearsal" style="min-height:18rem;object-fit:cover;border-radius:1.5rem;width:100%">
+    </div>
+  </section>
+  <section class="sec">
+    <h2 style="font-size:1.85rem">Who noticed</h2>
+    <p style="margin-top:.75rem;max-width:40rem;font-size:14px;line-height:1.7;color:var(--muted)">Actor Vicky Kaushal praised the women and shared their work. Rapper Divine and actor Jiya Shankar have commented. Visitors have included Charan Raj and Sayaji Shinde. The courtyard collects famous names the way it collects marigolds — casually, then all at once.</p>
+    <div class="fam" style="margin-top:2.5rem">
+      <blockquote style="border-top:1px solid var(--ink);padding-top:1.25rem;margin:0"><p style="font-family:var(--disp);font-size:1.35rem;line-height:1.35">“Before coming here, we thought our lives were over. Here we have got a new life.”</p><footer style="margin-top:.75rem;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">Lata Patil · Resident, 72</footer></blockquote>
+      <blockquote style="border-top:1px solid var(--ink);padding-top:1.25rem;margin:0"><p style="font-family:var(--disp);font-size:1.35rem;line-height:1.35">“Shantai Old Age Home has given us a new lease of life. It is not enough to express our gratitude to Vijay More Sir and Maria Madam.”</p><footer style="margin-top:.75rem;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">Suman Mohite · 79 · Fit India awardee</footer></blockquote>
+    </div>
+  </section>
+  <section class="paper" style="padding:4rem 1.5rem">
+    <div class="wrap">
+      <h2 style="font-size:1.85rem">Press</h2>
+      <div id="press2" style="margin-top:1.5rem"></div>
+      <a class="btn btn-ink" href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer" style="margin-top:2rem">Watch the latest reel</a>
+    </div>
+  </section>
+</section>
+
+<section class="page" id="visit">
+  <div class="phero"><div class="wrap" style="max-width:56rem;margin:0 auto;padding:0">
+    <p class="kicker">Come by</p>
+    <h1>The gate is on Jamboti Road. The kettle is usually on.</h1>
+    <p>Visitors are pulled into birthdays, rangoli and the odd dance rehearsal. Short-stay rooms exist for families who cannot take an elder along to a wedding or a trip — maximum 15 days.</p>
+  </div></div>
+  <section class="split visit" style="padding-top:4rem">
+    <div>
+      <h2 style="font-size:1.85rem">Find us</h2>
+      <p style="margin-top:.75rem;line-height:1.7">Jamboti Road, Bamanwadi, Near VTU, Belagavi, Karnataka 590001</p>
+      <p style="font-size:14px;color:var(--muted)">13 km from Belagavi city</p>
+      <ul style="margin:1.5rem 0;padding:0;list-style:none;line-height:2">
+        <li><a href="tel:+919844268687">Ashram: +91 98442 68687</a></li>
+        <li><a href="tel:+918310664809">Office: +91 83106 64809</a></li>
+        <li><a href="mailto:shantaisecondchildhood@gmail.com">shantaisecondchildhood@gmail.com</a></li>
+      </ul>
+      <div style="overflow:hidden;border-radius:1.4rem;border:1px solid var(--line)">
+        <iframe title="Map of Shantai Vruddhashram" style="height:18rem;width:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Shantai%20Vruddhashram%20Bamanwadi%20Belagavi&z=14&output=embed"></iframe>
+      </div>
+    </div>
+    <form class="form" id="visit-form">
+      <h2 style="font-size:1.85rem">Write ahead</h2>
+      <p style="margin-top:.5rem;font-size:14px;color:var(--muted)">This drafts an email to the ashram and keeps a copy on your device. We'll confirm by phone.</p>
+      <label>Name</label><input name="name" required>
+      <label>Phone</label><input name="phone" required>
+      <label>Preferred date</label><input type="date" name="date">
+      <label>I would like to</label>
+      <select name="kind">
+        <option>Visit the courtyard</option>
+        <option>Join a birthday or celebration</option>
+        <option>Ask about short-stay rooms (max 15 days)</option>
+        <option>Ask about admission</option>
+        <option>Volunteer</option>
+      </select>
+      <label>Note</label><textarea name="note" rows="4"></textarea>
+      <button class="btn btn-gold" type="submit" style="width:100%;margin-top:1.25rem" id="visit-btn">Send to the ashram</button>
+    </form>
+  </section>
+  <section class="paper" style="padding:3.5rem 1.5rem;margin-top:2rem">
+    <div class="split wrap" style="padding:0">
+      <div>
+        <h2 style="font-size:1.85rem">Guest rooms</h2>
+        <p style="margin-top:.75rem;line-height:1.7;color:rgba(11,10,9,.8)">Five deluxe rooms were built for elderly parents who cannot travel to a wedding or function. Families may leave a loved one for up to 15 days. Inaugurated in the presence of Sri Gurusidda Swamiji of Karanjimutt and Sri Chandrashekhar Shivacharya Swamiji of Hukkeri Hiremath.</p>
+      </div>
+      <img src="https://static.wixstatic.com/media/9c3bce_6685242b292a408f91e26c6dad347030~mv2.jpg" alt="Ashram courtyard" style="height:16rem;object-fit:cover;border-radius:1.4rem;width:100%">
+    </div>
+  </section>
+</section>
+
+<section class="page" id="give">
+  <div class="phero"><div class="wrap" style="max-width:56rem;margin:0 auto;padding:0">
+    <p class="kicker">Give</p>
+    <h1>No grant. No fees. The house runs on the rest of us.</h1>
+    <p>Shantai has never taken government money. Residents are not billed. Every meal, medicine, flight seat and Sunday film is a gift. Terms apply on admissions; generosity does not.</p>
+  </div></div>
+  <section class="split" style="padding-top:4rem">
+    <div>
+      <h2 style="font-size:1.85rem">What your rupees do</h2>
+      <div id="tiers"></div>
+    </div>
+    <form class="form" id="give-form">
+      <p class="kicker">Pledge</p>
+      <p style="font-family:var(--disp);font-size:3rem;margin-top:.5rem" id="amt-show">₹5,100</p>
+      <p style="font-size:14px;color:var(--muted)" id="amt-impact">Breakfast, lunch and dinner for one resident.</p>
+      <label>Or another amount</label>
+      <input inputmode="numeric" id="custom" placeholder="e.g. 2500">
+      <label>Your name</label><input name="name" required>
+      <button class="btn btn-gold btn-lg" type="submit" style="width:100%;margin-top:1.25rem" id="give-btn">Email the ashram to complete</button>
+      <p style="margin-top:1rem;font-size:12px;line-height:1.6;color:var(--muted)">We don't process payments on this page yet. Your email asks shantaisecondchildhood@gmail.com for UPI and account details so the gift lands in the right kettle.</p>
+    </form>
+  </section>
+  <section class="ink" style="margin-top:2rem"><div class="wrap" style="max-width:48rem">
+    <h2 style="font-size:1.85rem">Other ways to help</h2>
+    <ul style="margin:1.25rem 0 0;padding-left:1.2rem;color:rgba(244,235,218,.75);line-height:1.9">
+      <li>Bring a cake on a birthday. The house celebrates everyone.</li>
+      <li>Sponsor a trip seat — Pandharpur, Goa, Tirupati, or the next Mumbai.</li>
+      <li>Offer medical camps, physiotherapy hours, or a Sunday film.</li>
+      <li>Share a reel. The courtyard's fame is how new donors find the gate.</li>
+    </ul>
+  </div></section>
+</section>
+</main>
+
+<footer class="ft">
+  <div class="ft-grid">
+    <div>
+      <div class="brand"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle cx='100' cy='100' r='98' fill='%23F7F1E6'/><circle cx='100' cy='100' r='93' stroke='%23E39B12' stroke-width='2.5'/><path d='M28 58c22-38 122-38 144 0-20-8-48-14-72-14s-52 6-72 14z' fill='%23E39B12'/><circle cx='100' cy='58' r='26' fill='%23F0B429'/><circle cx='100' cy='58' r='16' fill='%23E39B12'/><text x='100' y='128' text-anchor='middle' font-family='Tiro Devanagari Marathi,serif' font-size='34' font-weight='600' fill='%231A1208'>शांताई</text><path d='M62 142h76' stroke='%23E39B12' stroke-width='1.5'/><text x='100' y='162' text-anchor='middle' font-family='Outfit,sans-serif' font-size='9' letter-spacing='3' fill='%238A7864'>SECOND CHILDHOOD</text></svg>" alt=""><span><b style="font-size:1.15rem">Shantai Second Childhood</b><span class="deva" style="letter-spacing:0;text-transform:none;font-size:15px">शांताई वृद्धाश्रम</span></span></div>
+      <p style="margin-top:1rem;max-width:22rem;font-size:14px;line-height:1.7;color:rgba(244,235,218,.7)">A free home for elders in Bamanwadi, Belagavi. Run entirely on donations. No government grants. Residents are not charged fees. Terms apply.</p>
+    </div>
+    <div>
+      <p class="kicker" style="color:var(--gold)">Visit</p>
+      <p style="margin-top:.75rem;font-size:14px;line-height:1.7;color:rgba(244,235,218,.8)">Jamboti Road, Bamanwadi, Near VTU, Belagavi, Karnataka 590001</p>
+      <p style="font-size:14px;color:rgba(244,235,218,.55)">13 km from Belagavi city</p>
+    </div>
+    <div>
+      <p class="kicker" style="color:var(--gold)">Pages</p>
+      <ul id="ft-nav" style="margin:.75rem 0 0;padding:0;list-style:none;font-size:14px;line-height:2;color:rgba(244,235,218,.8)"></ul>
+    </div>
+    <div>
+      <p class="kicker" style="color:var(--gold)">Write</p>
+      <p style="margin-top:.75rem;font-size:14px;line-height:2"><a href="mailto:shantaisecondchildhood@gmail.com">Email</a><br>
+      <a href="tel:+919844268687">+91 98442 68687</a><br>
+      <a href="tel:+918310664809">+91 83106 64809</a></p>
+      <p style="margin-top:1rem;display:flex;gap:.75rem">
+        <a href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer">IG</a>
+        <a href="https://www.facebook.com/shantaivruddhashram" target="_blank" rel="noreferrer">FB</a>
+        <a href="https://www.youtube.com/@shantai_second_childhood" target="_blank" rel="noreferrer">YT</a>
+      </p>
+    </div>
+  </div>
+  <div class="ft-bot">Established 1998 · Named for Shantai, mother of Vijay More · Belagavi, Karnataka</div>
+</footer>
+<script>
+const NAV=[["home","Home"],["story","Our story"],["life","Daily life"],["viral","Viral Dadis"],["visit","Visit"],["give","Give"]];
+const STATS=[{n:1998,s:"",l:"Founded in Belagavi"},{n:165,s:"+",l:"Elders given a home"},{n:1,s:"L+",l:"Instagram family"},{n:2,s:" Cr",l:"Views on a single reel"}];
+const TICK=["Viral Dadis","India's Got Talent","Fit India Championship","2 crore views","Vicky Kaushal","Free for residents","Donations only","Belagavi · 1998"];
+const REELS=[{s:"Chappada Maronge",f:"Pushpa 2",v:"2 Cr",k:"4.8 L"},{s:"So Beautiful",f:"—",v:"2 Cr",k:"12 L"},{s:"Teri Dulhan Sajaungi",f:"Priyanka Chopra",v:"1.8 Cr",k:"—"},{s:"Tauba Tauba",f:"Bad Newz",v:"1 Cr",k:"5.8 L"},{s:"APT Dance Challenge",f:"Rosé & Bruno Mars",v:"1 M+",k:"—"},{s:"Chanel",f:"Tyla",v:"Viral",k:"—"}];
+const PRESS=[{t:"These ‘viral dadis’ from Belgaum are taking the internet by storm",s:"YourStory",y:"2024",h:"https://yourstory.com/herstory/2024/08/these-viral-dadis-from-belgaum-are-taking-the-internet-fame"},{t:"Belgaum’s elderly women join the APT Dance Challenge — and win the internet",s:"The Indian Express",y:"2024",h:"https://indianexpress.com/article/trending/trending-in-india/belgaum-elderly-women-join-apt-dance-challenge-viral-video-9660050/"},{t:"Shantai old-age home celebrates silver jubilee — and flies the family to Mumbai",s:"The Times of India",y:"2024",h:"https://timesofindia.indiatimes.com/city/hubballi/shantai-old-age-home-celebrates-silver-jubilee/articleshow/107837690.cms"},{t:"This old-age home helps the elderly rediscover their childhood",s:"The Better India",y:"2024",h:"https://thebetterindia.com/video/this-old-age-home-helps-the-elderly-rediscover-their-childhood/"},{t:"Grandmothers go viral — and win the Fit India Championship",s:"ETV Bharat",y:"2026",h:"https://www.etvbharat.com/en/offbeat/grandmothers-go-viral-belagavi-old-age-home-wins-fit-india-award-reels-cross-millions-of-views-enn26031001172"},{t:"MLC Channaraj Hattiholi praises the seva at Shantai Vrudhashram",s:"The Times of India",y:"2026",h:"https://timesofindia.indiatimes.com/city/hubballi/shantai-vrudhashram-with-27-members-wins-praise-from-lawmakers/articleshow/130092746.cms"}];
+const SCHED=[{t:"6:00 AM",m:360,title:"Walk & meditation",n:"The courtyard wakes with slow steps and birds."},{t:"7:30 AM",m:450,title:"Bhajan",n:"Morning hymns. Visitors are welcome to sit with us."},{t:"8:30 AM",m:510,title:"Breakfast",n:"Hot, homely, and shared at one table."},{t:"10:00 AM",m:600,title:"Physiotherapy",n:"Until 11:30 AM — mats, walking rails, gentle strength."},{t:"12:30 PM",m:750,title:"Lunch",n:"The biggest meal. Everyone eats together."},{t:"1:30 PM",m:810,title:"Rest time",n:"Until 3:30 PM. The house goes quiet, on purpose."},{t:"4:00 PM",m:960,title:"Tea time",n:"Biscuits, gossip, and the day's first dance rehearsal."},{t:"4:30 PM",m:990,title:"Work & play",n:"Until 5:30 PM — chores, rangoli, singing, visiting."},{t:"6:30 PM",m:1110,title:"Evening bhajan",n:"Lamps, incense, and the same songs that started the day."},{t:"7:30 PM",m:1170,title:"Dinner",n:"Light, warm, unhurried."},{t:"8:30 PM",m:1230,title:"TV time",n:"Sunday is movie night. Weekdays, whatever the ajjis pick."}];
+const FAMILY=[{r:"Founder & executive chairman",n:"Vijay More",b:"Former Mayor of Belagavi. Named the home after his mother, Shantai. Has run it on donations since 1998, with no government grant."},{r:"Co-founder",n:"Vijay Patil",b:"Helped raise the house in 1998 so elders from every community would have a door that opened."},{r:"Heart of the house",n:"Maria More",b:"Lives the seva daily — including personal care for residents who are bedridden. Lived at the ashram for eight years after marriage."},{r:"Son · board director",n:"Allan More",b:"Grew up inside these walls. Helps run the home the way he was raised in it."},{r:"Daughter · the reel-maker",n:"Cheryl More",b:"MBA. Teaches the ajjis to sing and dance, then posts the performances. The internet met Shantai because she opened the courtyard to the world."}];
+const ACTS=[{t:"Trips, twice a year",b:"Pandharpur, Kolhapur, Goa, Tirupati, Mumbai, Pune. Last year's Mumbai chapter was by flight — breakfast at the Taj, Gateway of India, Siddhivinayak, Mahalaxmi, the Fountain of Joy, and a boat on the harbour.",i:"https://static.wixstatic.com/media/9c3bce_571ca17e2482487187f772f4438c4bf2~mv2.jpg"},{t:"A house that throws parties",b:"Birthdays, anniversaries, weddings, naming ceremonies — celebrated here, with visitors pulled onto the floor to dance. Nobody sits in the corner.",i:"https://static.wixstatic.com/media/9c3bce_ac7bbcf8cae2430eaae86a9304711d9f~mv2.jpg"},{t:"Sunday cinema",b:"Every Sunday a film is screened. Popcorn optional. Commentary from the front row is not.",i:"https://static.wixstatic.com/media/9c3bce_ac7bbcf8cae2430eaae86a9304711d9f~mv2.jpg"},{t:"The city as a stage",b:"Residents enter Belagavi's singing, dancing, rangoli, drawing and painting competitions. They do not enter to be cute. They enter to win.",i:"https://static.wixstatic.com/media/9c3bce_e9ff2e41c9664de09189c51720b1ab87~mv2.jpg"}];
+const MUM=[{t:"Wheels up from Belagavi",b:"Thirty-seven residents boarded a flight — many for the first time. Donors made the four-day chapter possible.",i:"https://static.wixstatic.com/media/9c3bce_6685242b292a408f91e26c6dad347030~mv2.jpg"},{t:"Breakfast at the Taj",b:"VVIP hospitality at the Taj Mahal Palace. Steel thalis at home; white linen for a morning, just because they deserved it.",i:"https://static.wixstatic.com/media/9c3bce_6685242b292a408f91e26c6dad347030~mv2.jpg"},{t:"Gateway of India",b:"The arch they had only seen on television. Sea wind, pigeons, and a group photograph that still hangs in the hall.",i:"https://static.wixstatic.com/media/9c3bce_571ca17e2482487187f772f4438c4bf2~mv2.jpg"},{t:"Siddhivinayak & Mahalaxmi",b:"Temples first. Always. Offerings, aarti, and the kind of quiet that follows a long wish.",i:"https://static.wixstatic.com/media/9c3bce_e9ff2e41c9664de09189c51720b1ab87~mv2.jpg"},{t:"A boat on the harbour",b:"The Fountain of Joy, the Bandra–Worli Sea Link from the water, and the city glittering like it was throwing them a party.",i:"https://static.wixstatic.com/media/9c3bce_6063d656fbdd4a399165c38c29e0aaf8~mv2.jpg"}];
+const TIERS=[{a:501,l:"A week's tea",i:"Keeps the 4 o'clock kettle singing."},{a:1100,l:"A Sunday movie",i:"Projector, snacks, and a full house of critics."},{a:5100,l:"A month of meals",i:"Breakfast, lunch and dinner for one resident."},{a:11000,l:"Physio & care",i:"A month of therapy, check-ups and medicines."},{a:51000,l:"A trip seat",i:"Helps put an ajji on a train, or a plane."}];
+const SEED=[{n:"Ananya",c:"Pune",m:"The ajjis made my whole family get up and dance. Please never stop."},{n:"Rahul",c:"Bengaluru",m:"Watched the APT reel four times. Sending love from a grandson who needed this today."},{n:"Meera",c:"Mumbai",m:"Breakfast at the Taj is the most correct sentence I have read this year."},{n:"Joseph",c:"Belagavi",m:"Neighbourhood pride. Vijay sir, Maria madam — jeev bhar dhanyavad."}];
+const IG="https://www.instagram.com/shantai_second_childhood/";
+const MAIL="shantaisecondchildhood@gmail.com";
+
+function navHtml(id){return NAV.map(([k,l])=>`<a href="#${k}" data-go="${k}" class="${id===k?'on':''}">${l}</a>`).join("")}
+function go(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("on",p.id===id));
+  document.querySelectorAll("[data-go]").forEach(a=>a.classList.toggle("on",a.getAttribute("data-go")===id));
+  document.getElementById("mnav").style.display="none";
+  window.scrollTo(0,0);
+  history.replaceState(null,"","#"+id);
+}
+function currentActivity(mins){
+  let cur=SCHED[SCHED.length-1];
+  for(let i=0;i<SCHED.length;i++){
+    const item=SCHED[i], next=SCHED[i+1];
+    if(mins>=item.m && (!next || mins<next.m)){cur=item;break}
+    if(mins<SCHED[0].m){cur=SCHED[SCHED.length-1];break}
+  }
+  return cur;
+}
+function minutesNowIST(){
+  const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",hour:"2-digit",minute:"2-digit",hourCycle:"h23",weekday:"long",day:"numeric",month:"long"}).formatToParts(new Date());
+  const g=t=>parts.find(p=>p.type===t)?.value||"";
+  const hour=+g("hour"), minute=+g("minute");
+  return {minutes:hour*60+minute,label:`${String(hour).padStart(2,"0")}:${String(minute).padStart(2,"0")}`,weekday:g("weekday"),day:g("day"),month:g("month")};
+}
+function renderLive(el){
+  const full=el.getAttribute("data-live")==="full";
+  const clock=minutesNowIST();
+  const live=currentActivity(clock.minutes);
+  let picked=null;
+  function paint(){
+    const activeTitle=picked||live.title;
+    const active=SCHED.find(s=>s.title===activeTitle)||live;
+    el.innerHTML=`<div class="live-hd"><div><p class="kicker">Right now in Bamanwadi</p><p style="font-family:var(--disp);font-size:1.6rem;margin-top:.25rem">${live.title}</p><p style="font-size:14px;color:var(--muted);margin-top:.25rem">${clock.weekday}${clock.day?`, ${clock.day} ${clock.month}`:""} · ${clock.label} IST${clock.weekday==="Sunday"?" · Sunday cinema after dinner":""}</p></div><span class="badge"><span class="dot"></span> Live schedule</span></div>
+    <ol class="slots">${SCHED.map(item=>{
+      const on=item.title===active.title, isLive=item.title===live.title;
+      const am=item.t.includes("AM");
+      return `<li><button type="button" class="slot ${on?"on":""}" data-title="${item.title}"><span class="t">${item.t.replace(" AM","").replace(" PM","")}<span style="display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.7">${am?"am":"pm"}</span></span><span><span style="display:flex;align-items:center;gap:.5rem;font-size:14px;font-weight:500">${item.title}${isLive?` <span class="now">now</span>`:""}</span>${full?`<span style="display:block;margin-top:2px;font-size:12px;line-height:1.5;${on?"color:rgba(244,235,218,.7)":"color:var(--muted)"}">${item.n}</span>`:""}</span></button></li>`;
+    }).join("")}</ol><p style="margin-top:1rem;font-size:14px;color:var(--muted)">${active.n}</p>`;
+    el.querySelectorAll(".slot").forEach(b=>b.onclick=()=>{picked=b.dataset.title;paint()});
+  }
+  paint();
+}
+function countUp(el,value,suffix){
+  const io=new IntersectionObserver(([e])=>{
+    if(!e.isIntersecting) return; io.disconnect();
+    const t0=performance.now(), dur=1100;
+    const tick=now=>{const t=Math.min(1,(now-t0)/dur); const eased=1-Math.pow(1-t,3); el.textContent=Math.round(value*eased)+suffix; if(t<1) requestAnimationFrame(tick)};
+    requestAnimationFrame(tick);
+  },{threshold:.4});
+  io.observe(el);
+}
+
+document.getElementById("desk-nav").innerHTML=navHtml("home");
+document.getElementById("mnav").innerHTML=navHtml("home")+`<a class="btn btn-gold" href="#give" data-go="give" style="margin-top:.5rem">Donate</a>`;
+document.getElementById("ft-nav").innerHTML=NAV.map(([k,l])=>`<li><a href="#${k}" data-go="${k}">${l}</a></li>`).join("");
+document.getElementById("ham").onclick=()=>{const m=document.getElementById("mnav"); m.style.display=m.style.display==="block"?"none":"block"};
+document.getElementById("sun").innerHTML=Array.from({length:16},(_,i)=>`<rect x="98" y="8" width="4" height="28" rx="2" fill="#E39B12" transform="rotate(${i*22.5} 100 100)"/>`).join("")+`<circle cx="100" cy="100" r="36" fill="#E39B12"/><circle cx="100" cy="100" r="22" fill="#0B0A09"/>`;
+const spots=[{l:"8%",d:"0s",u:"18s"},{l:"22%",d:"3s",u:"15s"},{l:"41%",d:"7s",u:"20s"},{l:"58%",d:"1s",u:"16s"},{l:"73%",d:"5s",u:"19s"},{l:"88%",d:"9s",u:"14s"}];
+document.getElementById("petals").innerHTML=spots.map(s=>`<span class="petal" style="left:${s.l};animation-delay:${s.d};animation-duration:${s.u}"></span>`).join("");
+document.getElementById("ticker").innerHTML=[0,1].map(()=>`<span>${TICK.map(t=>`${t} <span aria-hidden>●</span>`).join(" ")}</span>`).join("");
+document.getElementById("stats").innerHTML=STATS.map((s,i)=>`<div><b data-count="${s.n}" data-suf="${s.s}">0${s.s}</b><small>${s.l}</small></div>`).join("");
+document.querySelectorAll("[data-count]").forEach(el=>countUp(el,+el.dataset.count,el.dataset.suf));
+const reelHTML=r=>`<a class="card" href="${IG}" target="_blank" rel="noreferrer"><p style="color:var(--gold)">▶</p><h3>${r.s}</h3><p style="font-size:14px;color:rgba(244,235,218,.5)">${r.f}</p><p class="v">${r.v}</p><p class="m">views · ${r.k} likes</p></a>`;
+document.getElementById("reels").innerHTML=REELS.map(reelHTML).join("");
+document.getElementById("reels2").innerHTML=REELS.map(r=>`<a class="card" style="background:var(--paper);border-color:var(--line);color:var(--ink)" href="${IG}" target="_blank" rel="noreferrer"><p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">${r.f}</p><h3>${r.s}</h3><p class="v" style="color:var(--red)">${r.v}</p><p class="m" style="color:var(--muted)">${r.k} likes</p></a>`).join("");
+document.getElementById("press").innerHTML=PRESS.map(p=>`<a href="${p.h}" target="_blank" rel="noreferrer"><span style="font-weight:500">${p.t}</span><span class="src">${p.s} · ${p.y}</span></a>`).join("");
+document.getElementById("press2").innerHTML=PRESS.map(p=>`<a href="${p.h}" target="_blank" rel="noreferrer" style="display:flex;justify-content:space-between;gap:1rem;border:1px solid var(--line);background:var(--cream);border-radius:1rem;padding:1rem 1.25rem;margin-top:.75rem"><span><span class="src">${p.s} · ${p.y}</span><span style="display:block;margin-top:.25rem;font-weight:500">${p.t}</span></span></a>`).join("");
+document.getElementById("family").innerHTML=FAMILY.map(f=>`<article><p class="kicker">${f.r}</p><h3 style="font-size:1.5rem;margin-top:.5rem">${f.n}</h3><p style="margin-top:.5rem;font-size:14px;line-height:1.6;color:rgba(11,10,9,.75)">${f.b}</p></article>`).join("");
+document.getElementById("door").innerHTML=[["No one left","Elders without family support. Open to any caste, any religion — that was the point in 1998."],["Not a paid hostel","Those with sons, government pensions or property are asked to look elsewhere. The free beds are finite."],["Women from 55","Men from 60, women from 55. Hygiene, food, medical camps, hot water, a library, a swing, a harmonium."]].map(([t,b])=>`<article style="border-top:1px solid var(--ink);padding-top:1.25rem"><h3 style="font-size:1.5rem">${t}</h3><p style="margin-top:.5rem;font-size:14px;line-height:1.6;color:var(--muted)">${b}</p></article>`).join("");
+document.getElementById("acts").innerHTML=ACTS.map(a=>`<article class="card" style="background:var(--cream);border-color:var(--line);color:var(--ink);padding:0;overflow:hidden"><img src="${a.i}" alt="" style="height:13rem;width:100%;object-fit:cover"><div style="padding:1.5rem"><h3>${a.t}</h3><p style="margin-top:.5rem;font-size:14px;line-height:1.6;color:rgba(11,10,9,.75)">${a.b}</p></div></article>`).join("");
+let stop=0;
+function paintMum(){
+  const cur=MUM[stop];
+  document.getElementById("mumbai").innerHTML=`<ol style="display:flex;gap:.5rem;overflow:auto;padding:0;margin:0;list-style:none">${MUM.map((s,i)=>`<li style="min-width:14rem"><button type="button" class="tier ${i===stop?"on":""}" data-i="${i}" style="margin:0"><span><span class="kicker" style="color:var(--gold)">${String(i+1).padStart(2,"0")}</span><span style="display:block;font-weight:500;margin-top:.25rem">${s.t}</span></span></button></li>`).join("")}</ol><div><img src="${cur.i}" alt="${cur.t}" style="height:22rem;width:100%;object-fit:cover;border-radius:1.5rem"><h3 style="font-size:1.85rem;margin-top:1.25rem">${cur.t}</h3><p style="margin-top:.5rem;line-height:1.7;color:rgba(11,10,9,.8)">${cur.b}</p></div>`;
+  document.querySelectorAll("#mumbai [data-i]").forEach(b=>b.onclick=()=>{stop=+b.dataset.i;paintMum()});
+}
+paintMum();
+document.querySelectorAll("[data-live]").forEach(renderLive);
+
+const KEY="shantai-blessings";
+let items=[...SEED];
+try{const raw=JSON.parse(localStorage.getItem(KEY)||"[]"); if(Array.isArray(raw)&&raw.length) items=[...raw,...SEED]}catch(e){}
+function paintBless(){document.getElementById("bless-list").innerHTML=items.slice(0,8).map(b=>`<li class="note"><p style="font-family:var(--disp);font-size:1.1rem">“${b.m}”</p><p style="margin-top:.75rem;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">${b.n} · ${b.c}</p></li>`).join("")}
+paintBless();
+document.getElementById("bless-form").onsubmit=e=>{
+  e.preventDefault();
+  const fd=new FormData(e.target);
+  const next={n:fd.get("name").trim(),c:(fd.get("city")||"Somewhere kind").trim(),m:fd.get("message").trim()};
+  if(!next.n||!next.m) return;
+  items=[next,...items];
+  try{localStorage.setItem(KEY,JSON.stringify(items.filter(i=>!SEED.includes(i)).slice(0,40)))}catch(err){}
+  e.target.reset();
+  document.getElementById("bless-btn").textContent="Received — dhanyavad";
+  setTimeout(()=>document.getElementById("bless-btn").textContent="Pin it to the wall",2400);
+  paintBless();
+};
+
+let amount=5100, custom="";
+function chosen(){return custom?Number(custom)||0:amount}
+function impact(){const t=[...TIERS].reverse().find(x=>chosen()>=x.a); return t?t.i:"Every rupee becomes tea, rice, or a bus ticket."}
+function paintTiers(){
+  document.getElementById("tiers").innerHTML=TIERS.map(t=>`<button type="button" class="tier ${!custom&&amount===t.a?"on":""}" data-a="${t.a}"><span><span style="display:block;font-family:var(--disp);font-size:1.25rem">₹${t.a.toLocaleString("en-IN")}</span><span style="font-size:14px;opacity:.7">${t.l}</span></span><span style="max-width:12rem;text-align:right;font-size:12px;opacity:.7">${t.i}</span></button>`).join("");
+  document.getElementById("amt-show").textContent="₹"+(chosen()||0).toLocaleString("en-IN");
+  document.getElementById("amt-impact").textContent=impact();
+  document.querySelectorAll("#tiers [data-a]").forEach(b=>b.onclick=()=>{amount=+b.dataset.a;custom="";document.getElementById("custom").value="";paintTiers()});
+}
+paintTiers();
+document.getElementById("custom").oninput=e=>{custom=e.target.value.replace(/[^\d]/g,"");paintTiers()};
+document.getElementById("give-form").onsubmit=e=>{
+  e.preventDefault();
+  const name=e.target.name.value;
+  const subject=encodeURIComponent(`Donation pledge · ₹${chosen().toLocaleString("en-IN")}`);
+  const body=encodeURIComponent(`Namaskar,\n\nI would like to support Shantai Second Childhood with ₹${chosen().toLocaleString("en-IN")}.\nName: ${name}\n\nPlease share UPI / bank details.\n`);
+  location.href=`mailto:${MAIL}?subject=${subject}&body=${body}`;
+  document.getElementById("give-btn").textContent="Opening your email…";
+};
+document.getElementById("visit-form").onsubmit=e=>{
+  e.preventDefault();
+  const fd=new FormData(e.target);
+  const subject=encodeURIComponent(`Shantai visit — ${fd.get("kind")}`);
+  const body=encodeURIComponent(`Name: ${fd.get("name")}\nPhone: ${fd.get("phone")}\nDate: ${fd.get("date")}\nPurpose: ${fd.get("kind")}\n\n${fd.get("note")}`);
+  location.href=`mailto:${MAIL}?subject=${subject}&body=${body}`;
+  document.getElementById("visit-btn").textContent="Opening your email…";
+};
+
+document.body.addEventListener("click",e=>{
+  const a=e.target.closest("[data-go]");
+  if(!a) return;
+  e.preventDefault();
+  go(a.getAttribute("data-go"));
+});
+window.addEventListener("hashchange",()=>go((location.hash||"#home").slice(1)||"home"));
+go((location.hash||"#home").slice(1)||"home");
+</script>
+</body>
+</html>

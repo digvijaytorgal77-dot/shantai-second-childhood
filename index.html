@@ -66,12 +66,22 @@ p{text-wrap:pretty}::selection{background:var(--gold);color:var(--ink)}
 .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2)}
 .ink{background:var(--ink);color:var(--cream);padding:4rem 0}
 .ink .kicker{color:var(--gold)}
-.cards{display:grid;gap:1rem;margin-top:2.5rem}
+.cards{display:grid;gap:.5rem;margin-top:2.5rem;grid-template-columns:repeat(2,1fr)}
 .card{border-radius:1.4rem;border:1px solid rgba(244,235,218,.15);background:var(--ink2);padding:1.25rem;transition:border-color .2s}
 .card:hover{border-color:var(--gold)}
 .card h3{font-size:1.5rem;margin:.75rem 0 .25rem}
 .card .v{font-family:var(--disp);font-size:1.85rem;color:var(--gold);margin-top:1.25rem}
 .card .m{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,235,218,.45)}
+.card.reel{padding:0;overflow:hidden}
+.reel-media{position:relative;aspect-ratio:9/16;background:#0b0a09;overflow:hidden}
+.reel-media iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.reel-ov{position:absolute;left:0;right:0;bottom:0;padding:.75rem;background:linear-gradient(to top,rgba(11,10,9,.85),transparent);pointer-events:none}
+.reel-ov b{display:block;font-family:var(--disp);font-size:.9rem;color:#f4ebda;font-weight:500}
+.reel-ov i{display:block;margin-top:2px;font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#e39b12}
+.reel .meta{display:none;padding:1.25rem}
+.reel .meta h3{margin-top:0}
+.reel .v{margin-top:1rem}
+.morewrap{display:flex;justify-content:center;margin-top:1.5rem}
 .sec{max-width:72rem;margin:0 auto;padding:4rem 1.5rem}
 .paper{background:var(--paper);border-block:1px solid var(--line)}
 .quote{max-width:56rem;margin:0 auto;padding:4rem 1.5rem}
@@ -117,7 +127,9 @@ textarea{resize:none}
 .photos{display:grid;gap:.75rem;padding:0 1.5rem 4rem}
 @media(min-width:640px){
   .stats{grid-template-columns:repeat(2,1fr);padding-left:1.5rem;padding-right:1.5rem}
-  .cards{grid-template-columns:repeat(2,1fr)}
+  .cards{gap:1rem}
+  .reel-ov{display:none}
+  .reel .meta{display:block}
   .slots{grid-template-columns:repeat(2,1fr)}
   .notes{grid-template-columns:repeat(2,1fr)}
   .fam{grid-template-columns:repeat(2,1fr)}
@@ -187,8 +199,12 @@ textarea{resize:none}
     <div class="wrap">
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:flex-end">
         <div><p class="kicker">The Viral Dadis</p><h2 style="font-size:clamp(2rem,4vw,3rem);margin-top:.5rem">Age is a terrible excuse.</h2></div>
-        <a class="btn btn-gold" href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer">@shantai_second_childhood</a>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+          <a class="btn btn-gold" href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer">@shantai_second_childhood</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@Shantai_vrudhashram" target="_blank" rel="noreferrer">@Shantai_vrudhashram</a>
+        </div>
       </div>
+      <p style="margin-top:1rem;color:rgba(244,235,218,.6);font-size:14px">The dances play here. Tap a card for sound — one at a time, no leaving the page.</p>
       <div class="cards" id="reels"></div>
       <p style="margin-top:2rem;max-width:48rem;color:rgba(244,235,218,.65);font-size:14px;line-height:1.7">Cheryl More taught the steps. The ajjis stole the internet. Vicky Kaushal, Divine and Jiya Shankar have shared the reels. Eight grandmothers received a standing ovation on India's Got Talent. Suman Mohite, 79, brought home the Fit India Championship.</p>
     </div>
@@ -321,11 +337,11 @@ textarea{resize:none}
   <section class="sec">
     <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
       <a class="card" style="background:var(--ink)" href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer"><p style="font-family:var(--disp);font-size:2rem;color:var(--cream);margin-top:1rem">1 L+</p><p style="color:rgba(244,235,218,.6);font-size:14px">Instagram family</p></a>
-      <a class="card" style="background:var(--ink)" href="https://www.youtube.com/@shantai_second_childhood" target="_blank" rel="noreferrer"><p style="font-family:var(--disp);font-size:2rem;color:var(--cream);margin-top:1rem">YouTube</p><p style="color:rgba(244,235,218,.6);font-size:14px">shantai_second_childhood</p></a>
+      <a class="card" style="background:var(--ink)" href="https://www.youtube.com/@Shantai_vrudhashram" target="_blank" rel="noreferrer"><p style="font-family:var(--disp);font-size:2rem;color:var(--cream);margin-top:1rem">YouTube</p><p style="color:rgba(244,235,218,.6);font-size:14px">@Shantai_vrudhashram</p></a>
       <a class="card" style="background:var(--ink)" href="https://www.facebook.com/shantaivruddhashram" target="_blank" rel="noreferrer"><p style="font-family:var(--disp);font-size:2rem;color:var(--cream);margin-top:1rem">Facebook</p><p style="color:rgba(244,235,218,.6);font-size:14px">Shantai Vruddhashram</p></a>
     </div>
     <h2 style="font-size:1.85rem;margin-top:3.5rem">Hall of reels</h2>
-    <p style="margin-top:.5rem;font-size:14px;color:var(--muted)">Tap a card to open Instagram. Numbers as reported in 2026 press.</p>
+    <p style="margin-top:.5rem;font-size:14px;color:var(--muted)">The courtyard dances on this page. Tap for sound — numbers as reported in 2026 press.</p>
     <div class="cards" id="reels2" style="margin-top:1.5rem"></div>
   </section>
   <section class="ink">
@@ -462,7 +478,7 @@ textarea{resize:none}
       <p style="margin-top:1rem;display:flex;gap:.75rem">
         <a href="https://www.instagram.com/shantai_second_childhood/" target="_blank" rel="noreferrer">IG</a>
         <a href="https://www.facebook.com/shantaivruddhashram" target="_blank" rel="noreferrer">FB</a>
-        <a href="https://www.youtube.com/@shantai_second_childhood" target="_blank" rel="noreferrer">YT</a>
+        <a href="https://www.youtube.com/@Shantai_vrudhashram" target="_blank" rel="noreferrer">YT</a>
       </p>
     </div>
   </div>
@@ -472,7 +488,7 @@ textarea{resize:none}
 const NAV=[["home","Home"],["story","Our story"],["life","Daily life"],["viral","Viral Dadis"],["visit","Visit"],["give","Give"]];
 const STATS=[{n:1998,s:"",l:"Founded in Belagavi"},{n:165,s:"+",l:"Elders given a home"},{n:1,s:"L+",l:"Instagram family"},{n:2,s:" Cr",l:"Views on a single reel"}];
 const TICK=["Viral Dadis","India's Got Talent","Fit India Championship","2 crore views","Vicky Kaushal","Free for residents","Donations only","Belagavi · 1998"];
-const REELS=[{s:"Chappada Maronge",f:"Pushpa 2",v:"2 Cr",k:"4.8 L"},{s:"So Beautiful",f:"—",v:"2 Cr",k:"12 L"},{s:"Teri Dulhan Sajaungi",f:"Priyanka Chopra",v:"1.8 Cr",k:"—"},{s:"Tauba Tauba",f:"Bad Newz",v:"1 Cr",k:"5.8 L"},{s:"APT Dance Challenge",f:"Rosé & Bruno Mars",v:"1 M+",k:"—"},{s:"Chanel",f:"Tyla",v:"Viral",k:"—"}];
+const REELS=[{s:"Chappada Maronge",f:"Pushpa 2",v:"2 Cr",k:"4.8 L",y:"7s9_qi4-Ijs"},{s:"So Beautiful",f:"—",v:"2 Cr",k:"12 L",y:"Ed8j1hngHe4"},{s:"Teri Dulhan Sajaungi",f:"Priyanka Chopra",v:"1.8 Cr",k:"—",y:"4IaNk__KPfo"},{s:"Tauba Tauba",f:"Bad Newz",v:"1 Cr",k:"5.8 L",y:"AcnzM23tbiE"},{s:"APT Dance Challenge",f:"Rosé & Bruno Mars",v:"1 M+",k:"—",y:"jTvPh8piPOA"},{s:"Chanel",f:"Tyla",v:"Viral",k:"—",y:"lRL1EvIMYqM"}];
 const PRESS=[{t:"These ‘viral dadis’ from Belgaum are taking the internet by storm",s:"YourStory",y:"2024",h:"https://yourstory.com/herstory/2024/08/these-viral-dadis-from-belgaum-are-taking-the-internet-fame"},{t:"Belgaum’s elderly women join the APT Dance Challenge — and win the internet",s:"The Indian Express",y:"2024",h:"https://indianexpress.com/article/trending/trending-in-india/belgaum-elderly-women-join-apt-dance-challenge-viral-video-9660050/"},{t:"Shantai old-age home celebrates silver jubilee — and flies the family to Mumbai",s:"The Times of India",y:"2024",h:"https://timesofindia.indiatimes.com/city/hubballi/shantai-old-age-home-celebrates-silver-jubilee/articleshow/107837690.cms"},{t:"This old-age home helps the elderly rediscover their childhood",s:"The Better India",y:"2024",h:"https://thebetterindia.com/video/this-old-age-home-helps-the-elderly-rediscover-their-childhood/"},{t:"Grandmothers go viral — and win the Fit India Championship",s:"ETV Bharat",y:"2026",h:"https://www.etvbharat.com/en/offbeat/grandmothers-go-viral-belagavi-old-age-home-wins-fit-india-award-reels-cross-millions-of-views-enn26031001172"},{t:"MLC Channaraj Hattiholi praises the seva at Shantai Vrudhashram",s:"The Times of India",y:"2026",h:"https://timesofindia.indiatimes.com/city/hubballi/shantai-vrudhashram-with-27-members-wins-praise-from-lawmakers/articleshow/130092746.cms"}];
 const SCHED=[{t:"6:00 AM",m:360,title:"Walk & meditation",n:"The courtyard wakes with slow steps and birds."},{t:"7:30 AM",m:450,title:"Bhajan",n:"Morning hymns. Visitors are welcome to sit with us."},{t:"8:30 AM",m:510,title:"Breakfast",n:"Hot, homely, and shared at one table."},{t:"10:00 AM",m:600,title:"Physiotherapy",n:"Until 11:30 AM — mats, walking rails, gentle strength."},{t:"12:30 PM",m:750,title:"Lunch",n:"The biggest meal. Everyone eats together."},{t:"1:30 PM",m:810,title:"Rest time",n:"Until 3:30 PM. The house goes quiet, on purpose."},{t:"4:00 PM",m:960,title:"Tea time",n:"Biscuits, gossip, and the day's first dance rehearsal."},{t:"4:30 PM",m:990,title:"Work & play",n:"Until 5:30 PM — chores, rangoli, singing, visiting."},{t:"6:30 PM",m:1110,title:"Evening bhajan",n:"Lamps, incense, and the same songs that started the day."},{t:"7:30 PM",m:1170,title:"Dinner",n:"Light, warm, unhurried."},{t:"8:30 PM",m:1230,title:"TV time",n:"Sunday is movie night. Weekdays, whatever the ajjis pick."}];
 const FAMILY=[{r:"Founder & executive chairman",n:"Vijay More",b:"Former Mayor of Belagavi. Named the home after his mother, Shantai. Has run it on donations since 1998, with no government grant."},{r:"Co-founder",n:"Vijay Patil",b:"Helped raise the house in 1998 so elders from every community would have a door that opened."},{r:"Heart of the house",n:"Maria More",b:"Lives the seva daily — including personal care for residents who are bedridden. Lived at the ashram for eight years after marriage."},{r:"Son · board director",n:"Allan More",b:"Grew up inside these walls. Helps run the home the way he was raised in it."},{r:"Daughter · the reel-maker",n:"Cheryl More",b:"MBA. Teaches the ajjis to sing and dance, then posts the performances. The internet met Shantai because she opened the courtyard to the world."}];
@@ -544,9 +560,38 @@ document.getElementById("petals").innerHTML=spots.map(s=>`<span class="petal" st
 document.getElementById("ticker").innerHTML=[0,1].map(()=>`<span>${TICK.map(t=>`${t} <span aria-hidden>●</span>`).join(" ")}</span>`).join("");
 document.getElementById("stats").innerHTML=STATS.map((s,i)=>`<div><b data-count="${s.n}" data-suf="${s.s}">0${s.s}</b><small>${s.l}</small></div>`).join("");
 document.querySelectorAll("[data-count]").forEach(el=>countUp(el,+el.dataset.count,el.dataset.suf));
-const reelHTML=r=>`<a class="card" href="${IG}" target="_blank" rel="noreferrer"><p style="color:var(--gold)">▶</p><h3>${r.s}</h3><p style="font-size:14px;color:rgba(244,235,218,.5)">${r.f}</p><p class="v">${r.v}</p><p class="m">views · ${r.k} likes</p></a>`;
-document.getElementById("reels").innerHTML=REELS.map(reelHTML).join("");
-document.getElementById("reels2").innerHTML=REELS.map(r=>`<a class="card" style="background:var(--paper);border-color:var(--line);color:var(--ink)" href="${IG}" target="_blank" rel="noreferrer"><p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">${r.f}</p><h3>${r.s}</h3><p class="v" style="color:var(--red)">${r.v}</p><p class="m" style="color:var(--muted)">${r.k} likes</p></a>`).join("");
+const reelHTML=(r,paper)=>{
+  const likes=r.k==="—"?"":` · ${r.k} likes`;
+  const media=`<div class="reel-media"><iframe src="https://www.youtube.com/embed/${r.y}?rel=0&modestbranding=1&playsinline=1" title="${r.s}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><span class="reel-ov"><b>${r.s}</b><i>${r.v} views</i></span></div>`;
+  if(paper) return `<article class="card reel" style="background:var(--paper);border-color:var(--line);color:var(--ink)">${media}<div class="meta"><p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">${r.f}</p><h3>${r.s}</h3><p class="v" style="color:var(--red)">${r.v}</p><p class="m" style="color:var(--muted)">views${likes}</p></div></article>`;
+  return `<article class="card reel">${media}<div class="meta"><h3>${r.s}</h3><p style="font-size:14px;color:rgba(244,235,218,.5)">${r.f}</p><p class="v">${r.v}</p><p class="m">views${likes}</p></div></article>`;
+};
+function paintReelBox(id,paper,shown){
+  const box=document.getElementById(id);
+  if(!box) return;
+  const phone=window.matchMedia("(max-width:639px)").matches;
+  const take=phone?shown:REELS.length;
+  box.innerHTML=REELS.slice(0,take).map(r=>reelHTML(r,paper)).join("");
+  let more=box.nextElementSibling;
+  if(!more||!more.classList.contains("morewrap")){
+    more=document.createElement("div");
+    more.className="morewrap";
+    box.after(more);
+  }
+  if(phone&&take<REELS.length){
+    more.style.display="flex";
+    more.innerHTML=`<button type="button" class="btn ${paper?"btn-cream":"btn-ghost"}">Load more <span style="opacity:.7;font-size:12px">${REELS.length-take} more</span></button>`;
+    more.querySelector("button").onclick=()=>paintReelBox(id,paper,shown+2);
+  }else{
+    more.innerHTML="";
+    more.style.display="none";
+  }
+}
+function paintReels(){
+  paintReelBox("reels",false,2);
+  paintReelBox("reels2",true,2);
+}
+paintReels();
 document.getElementById("press").innerHTML=PRESS.map(p=>`<a href="${p.h}" target="_blank" rel="noreferrer"><span style="font-weight:500">${p.t}</span><span class="src">${p.s} · ${p.y}</span></a>`).join("");
 document.getElementById("press2").innerHTML=PRESS.map(p=>`<a href="${p.h}" target="_blank" rel="noreferrer" style="display:flex;justify-content:space-between;gap:1rem;border:1px solid var(--line);background:var(--cream);border-radius:1rem;padding:1rem 1.25rem;margin-top:.75rem"><span><span class="src">${p.s} · ${p.y}</span><span style="display:block;margin-top:.25rem;font-weight:500">${p.t}</span></span></a>`).join("");
 document.getElementById("family").innerHTML=FAMILY.map(f=>`<article><p class="kicker">${f.r}</p><h3 style="font-size:1.5rem;margin-top:.5rem">${f.n}</h3><p style="margin-top:.5rem;font-size:14px;line-height:1.6;color:rgba(11,10,9,.75)">${f.b}</p></article>`).join("");
